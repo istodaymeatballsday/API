@@ -4,14 +4,11 @@ import { getMealStrings } from "./dataCrunching";
 
 export async function getTodaysMealCode() {
   const meatballsAndMashRegex = /meatballs.*mashed|mashed.*meatballs/;
-  const mashRegex = /mashed/;
   const today = await getFood(getCurrentDate());
   const filterRegex = initFilterRegex(today);
-  // nested ternary, sue me
+
   return filterRegex(meatballsAndMashRegex)
     ? { msg: "Yep.", code: 1 }
-    : filterRegex(mashRegex)
-    ? { msg: "Nope. But it is mashed potatoes", code: 2 }
     : { msg: "Nope.", code: 0 };
 }
 
