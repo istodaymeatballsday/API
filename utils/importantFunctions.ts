@@ -8,8 +8,8 @@ export async function getTodaysMealCode() {
   const filterRegex = initFilterRegex(today);
 
   return filterRegex(meatballsAndMashRegex)
-    ? { msg: "Yep.", code: 1 }
-    : { msg: "Nope.", code: 0 };
+    ? { msg: "Yep.", code: 1, meat: today[0], veg: today[1] }
+    : { msg: "Nope.", code: 0, meat: today[0], veg: today[1] };
 }
 
 export async function getFood(start: Date, end: Date = start) {
