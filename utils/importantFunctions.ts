@@ -4,7 +4,7 @@ import { getMealStrings } from "./dataCrunching";
 
 export async function getTodaysMealCode() {
   const meatballsAndMashRegex = /meatballs.*mashed|mashed.*meatballs/;
-  let today = await getFood(getCurrentDate());
+  const today = await getFood(getCurrentDate());
   const filterRegex = initFilterRegex(today);
 
   if (today.length === 1) today.push('closed')
@@ -36,5 +36,3 @@ export function initFilterRegex(arr: string[]) {
 export function getCurrentDate() {
   return new Date(new Date().setTime(+new Date() + 7200000));
 }
-
-getTodaysMealCode().then(resp => console.log(resp))
